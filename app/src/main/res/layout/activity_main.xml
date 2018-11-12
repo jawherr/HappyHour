@@ -4,146 +4,180 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorAccent"
     tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="393dp"
+        android:layout_height="0dp"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="-6dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="39dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.032"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="0dp"
+            android:src="@drawable/happyhourr"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/button8"
-        android:layout_width="75dp"
+        android:layout_width="44dp"
         android:layout_height="40dp"
-        android:background="@mipmap/ic_launcher"
-        tools:layout_editor_absoluteX="309dp"
-        tools:layout_editor_absoluteY="471dp" />
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/listconvertimage"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="471dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/button7"
-        android:layout_width="75dp"
+        android:layout_width="44dp"
         android:layout_height="40dp"
-        android:background="@mipmap/ic_launcher"
-        tools:layout_editor_absoluteX="234dp"
-        tools:layout_editor_absoluteY="471dp" />
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/calendarconvert"
+        app:layout_constraintEnd_toStartOf="@+id/button8"
+        tools:layout_editor_absoluteY="471dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/button6"
-        android:layout_width="75dp"
+        android:layout_width="44dp"
         android:layout_height="40dp"
-        android:background="@mipmap/ic_launcher"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="471dp" />
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/groupconvert"
+        app:layout_constraintEnd_toStartOf="@+id/button7"
+        tools:layout_editor_absoluteY="471dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="75dp"
+        android:layout_width="44dp"
         android:layout_height="40dp"
-        android:background="@mipmap/ic_launcher"
-        tools:layout_editor_absoluteX="77dp"
-        tools:layout_editor_absoluteY="471dp" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="39dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:text="Se connecter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.032"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="306dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:srcCompat="@mipmap/ic_launcher" />
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:background="@drawable/placeholderconvert"
+        app:layout_constraintEnd_toStartOf="@+id/button6"
+        tools:layout_editor_absoluteY="471dp"
+        tools:ignore="MissingConstraints" />
 
     <SearchView
         android:id="@+id/searchView"
         android:layout_width="324dp"
         android:layout_height="32dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="37dp"
-        android:layout_height="31dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/searchView"
-        app:srcCompat="@mipmap/ic_launcher"
-        tools:layout_editor_absoluteY="127dp" />
+        android:layout_marginTop="8dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@+id/imageBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-    <ImageButton
+    <Button
+        android:id="@+id/imageBtn"
+        android:layout_width="26dp"
+        android:layout_height="28dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/mapsandflagsconvertimage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@mipmap/ic_launcher"
+        tools:layout_editor_absoluteY="125dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
         android:id="@+id/imageButton3"
         android:layout_width="48dp"
         android:layout_height="45dp"
-        android:layout_marginLeft="56dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/hotcoffeeconvertimage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <Button
+        android:id="@+id/imageButton4"
+        android:layout_width="48dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/restauranteatingconvert"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton5"
+        app:layout_constraintHorizontal_bias="0.525"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView"
         app:srcCompat="@mipmap/ic_launcher" />
 
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="48dp"
-        android:layout_height="45dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/_dynamic"
-        app:layout_constraintStart_toEndOf="@+id/imageButton3"
-        app:layout_constraintTop_toBottomOf="@+id/searchView"
-        app:srcCompat="@mipmap/ic_launcher" />
-
-    <ImageButton
+    <Button
         android:id="@+id/imageButton5"
         android:layout_width="48dp"
         android:layout_height="45dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="52dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/_dynamic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageButton4"
-        app:layout_constraintTop_toBottomOf="@+id/searchView"
+        android:layout_marginEnd="56dp"
+        android:layout_marginRight="56dp"
+        android:background="@drawable/cocktailconvertimage"
+        app:layout_constraintBottom_toTopOf="@+id/listview"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton3"
         app:srcCompat="@mipmap/ic_launcher" />
 
     <ListView
+        android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="247dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
+        app:layout_constraintTop_toBottomOf="@+id/imageButton4"
+        tools:layout_editor_absoluteX="0dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="75dp"
+        android:layout_width="44dp"
         android:layout_height="40dp"
-        android:background="@mipmap/ic_launcher"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="471dp" />
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/searchconvert"
+        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="471dp"
+        tools:ignore="MissingConstraints" />
 
 </android.support.constraint.ConstraintLayout>
