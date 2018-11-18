@@ -10,8 +10,8 @@ import retrofit2.http.GET;
 
 public interface Api {
 
-    String BASE_URL = "http://192.168.1.6:3636/MyRest/public/";
+    String BASE_URL = "http://72a1acfd.ngrok.io/MyRest/public/";
 
     @GET("restaurents")
-    Call<List<Restaurant>> getRestaurants();
+    Call<List<Restaurant>> getRestaurant();
 }

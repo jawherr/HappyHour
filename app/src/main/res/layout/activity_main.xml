@@ -7,6 +7,7 @@
     android:layout_height="match_parent">
 
 <ScrollView
+    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="50dp"
@@ -17,7 +18,7 @@
     <RelativeLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         >
         <LinearLayout
@@ -183,24 +184,24 @@
 
 
 
-
         <ListView
-            android:layout_below="@+id/horz"
-            android:id="@+id/listViewRestaurants"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
+            android:layout_below="@+id/horz"
+            android:id="@+id/listViewHeroes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
 
     </RelativeLayout>
 
 
 </ScrollView>
-<android.support.design.widget.BottomNavigationView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
-    app:menu="@menu/nav_menu"></android.support.design.widget.BottomNavigationView>
+
+    <android.support.design.widget.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/nav_menu"></android.support.design.widget.BottomNavigationView>
 </RelativeLayout>
 
 

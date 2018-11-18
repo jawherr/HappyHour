@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:androis="http://schemas.android.com/apk/res/android"
+
+    androis:layout_height="match_parent"
+    androis:layout_width="match_parent"
+    androis:orientation="vertical"
+    >
+
+
+    <TextView
+        androis:id="@+id/textViewName"
+        androis:layout_width="wrap_content"
+        androis:layout_height="wrap_content"
+        androis:layout_alignParentStart="true"
+        androis:layout_alignParentTop="true"
+        androis:layout_marginStart="35dp"
+        androis:layout_marginTop="44dp"
+        androis:text="TextView"
+        androis:layout_marginLeft="35dp"
+        androis:layout_alignParentLeft="true" />
+
+    <TextView
+        androis:id="@+id/textViewAdress"
+        androis:layout_width="wrap_content"
+        androis:layout_height="wrap_content"
+        androis:layout_alignStart="@+id/textViewName"
+        androis:layout_alignParentTop="true"
+        androis:layout_marginTop="15dp"
+        androis:text="TextView"
+        androis:layout_alignLeft="@+id/textViewName" />
+
+
+</RelativeLayout>
