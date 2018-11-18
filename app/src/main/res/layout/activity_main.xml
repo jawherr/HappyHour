@@ -115,6 +115,7 @@
         </LinearLayout>
 
         <HorizontalScrollView
+            android:id="@+id/horz"
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -183,6 +184,11 @@
 
 
 
+        <ListView
+            android:layout_below="@+id/horz"
+            android:id="@+id/listViewRestaurants"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
 
 
