@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Home">
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:background="@color/colorAccent"
+            tools:context=".MainActivity">
+
+            <RelativeLayout
+                android:id="@+id/main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:id="@+id/linv"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:background="@drawable/cafee"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin1"
+                    android:layout_width="match_parent"
+                    android:layout_height="68dp"
+                    android:layout_below="@+id/linv"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="70dp"
+                    tools:layout_editor_absoluteY="240dp">
+
+                    <SearchView
+                        android:id="@+id/searchView"
+                        android:layout_width="308dp"
+                        android:layout_height="match_parent"
+                        android:baselineAligned="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:iconifiedByDefault="false"
+                        android:queryHint="Que cherches-tu ?"
+                        android:radius="25dp"
+                        android:textColor="#000"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_action_name" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lin1"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="37dp"
+                    tools:layout_editor_absoluteY="319dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageButton
+                            android:id="@+id/btnRestaurent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_gravity="left"
+                            android:layout_marginLeft="33dp"
+                            android:layout_marginStart="33dp"
+                            android:layout_marginTop="0dp"
+                            android:background="@color/colorAccent"
+                            android:src="@drawable/ic_home_eat" />
+
+                        <ImageButton
+                            android:id="@+id/btnBar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginLeft="149dp"
+                            android:layout_marginStart="149dp"
+                            android:layout_marginTop="0dp"
+                            android:background="@color/colorAccent"
+                            android:src="@drawable/ic_home_drink" />
+
+                        <ImageButton
+                            android:id="@+id/btnCafe"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_gravity="right"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginEnd="39dp"
+                            android:layout_marginRight="39dp"
+                            android:background="@color/colorAccent"
+                            android:src="@drawable/ic_home_coffee" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <HorizontalScrollView
+                    android:id="@+id/horz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lin2"
+                    android:layout_marginTop="0dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/imageView3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:src="@drawable/event" />
+
+                        <ImageView
+                            android:id="@+id/imageView4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:src="@drawable/event" />
+
+                        <ImageView
+                            android:id="@+id/imageView5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:src="@drawable/event" />
+
+                        <ImageView
+                            android:id="@+id/imageView6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:src="@drawable/event" />
+
+                        <ImageView
+                            android:id="@+id/imageView7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:src="@drawable/event" />
+
+                        <ImageView
+                            android:id="@+id/imageView8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:src="@drawable/event" />
+
+                        <ImageView
+                            android:id="@+id/imageView9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:src="@drawable/event" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+                <LinearLayout
+                    android:id="@+id/Lh"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/hh"
+                    android:layout_below="@+id/horz"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Description de lapplication"
+                        android:layout_marginLeft="8dp"
+                        android:textColor="@android:color/white"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Description de lapplication"
+                        android:layout_marginLeft="8dp"
+                        android:textColor="@android:color/white"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Description de lapplication"
+                        android:layout_marginLeft="8dp"
+                        android:textColor="@android:color/white"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </ScrollView>
+    </FrameLayout>
+</RelativeLayout>
+
+
+
+
+
+
+

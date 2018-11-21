@@ -1,73 +1,59 @@
 package com.jawherkallell.happyhour;
 
-
-import android.app.Activity;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.view.MenuItem;
 
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
-public class MainActivity extends Activity {
-
-    ListView listView;
-    TextView text;
-    private  RestoAdapter adapter;
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
+    private static final String TAG = "MainActivity";
+    BottomNavigationView nav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        listView = (ListView) findViewById(R.id.listViewHeroes);
 
-        //calling the method to display the heroes
-        getHeroes();
+        nav=findViewById(R.id.btNav);
+        nav.setOnNavigationItemSelectedListener(this);
+        nav.setSelectedItemId(R.id.nav_home);
+
+
     }
 
-   private void getHeroes() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Api.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create()) //Here we are using the GsonConverterFactory to directly convert json data to object
-                .build();
+    Home home_fragment = new Home();
+    Event event_fragment = new Event();
+    Profile profile_fragment = new Profile();
+    Search search_fragment = new Search();
 
-        Api api = retrofit.create(Api.class);
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_home:
+                getSupportFragmentManager().beginTransaction().
+                        replace(R.id.container, home_fragment).commit();
+                return true;
 
-        Call<List<Restaurant>> call = api.getRestaurant();
+            case R.id.nav_events:
+                getSupportFragmentManager().beginTransaction().
+                        replace(R.id.container, event_fragment).commit();
+                return true;
 
-       call.enqueue(new Callback<List<Restaurant>>() {
-            @Override
-            public void onResponse(Call<List<Restaurant>> call, Response<List<Restaurant>> response) {
-                List<Restaurant> restoList = response.body();
-                //Creating an String array for the ListView
-                String[] restaurant= new String[restoList.size()];
+            case R.id.nav_search:
+                getSupportFragmentManager().beginTransaction().
+                        replace(R.id.container, search_fragment).commit();
+                return true;
 
-                //looping through all the heroes and inserting the names inside the string array
-                for (int i = 0; i < restoList.size(); i++) {
-                    restaurant[i] = restoList.get(i).getNom();
-                }
+            case R.id.nav_profile:
+                getSupportFragmentManager().beginTransaction().
+                        replace(R.id.container, profile_fragment).commit();
+                return true;
 
+        }
 
-                //displaying the string array into listview
-                adapter = new RestoAdapter(MainActivity.this,restoList);
-               // listView.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, restaurant));
-                    listView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onFailure(Call<List<Restaurant>> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
+        return false;
     }
+
 
 }

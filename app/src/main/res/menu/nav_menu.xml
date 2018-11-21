@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/baseline_home_black_18dp"
         android:title="Home" />
     <item
         android:id="@+id/nav_events"
+
         android:icon="@drawable/baseline_event_black_18dp"
         android:title="Events" />
     <item
@@ -16,5 +19,4 @@
         android:id="@+id/nav_profile"
         android:icon="@drawable/baseline_account_circle_black_18dp"
         android:title="Profile" />
-
 </menu>
