@@ -12,19 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/btNav"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintBottom_toTopOf="@+id/btNav"/>
 
 <android.support.design.widget.BottomNavigationView
     android:id="@+id/btNav"
     android:layout_width="match_parent"
     android:layout_alignParentBottom="true"
     android:layout_height="wrap_content"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
     app:menu="@menu/nav_menu">
 
 </android.support.design.widget.BottomNavigationView>

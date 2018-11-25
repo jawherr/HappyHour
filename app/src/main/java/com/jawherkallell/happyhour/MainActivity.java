@@ -40,11 +40,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                         replace(R.id.container, event_fragment).commit();
                 return true;
 
-            case R.id.nav_search:
+            /*case R.id.nav_search:
                 getSupportFragmentManager().beginTransaction().
                         replace(R.id.container, search_fragment).commit();
                 return true;
-
+            */
             case R.id.nav_profile:
                 getSupportFragmentManager().beginTransaction().
                         replace(R.id.container, profile_fragment).commit();
