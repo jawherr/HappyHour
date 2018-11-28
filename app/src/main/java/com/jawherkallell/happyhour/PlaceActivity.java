@@ -41,6 +41,7 @@ public class PlaceActivity extends AppCompatActivity {
     private FusedLocationProviderClient client;
     private List<Place> listPlace =new ArrayList<Place>();
     private String placetype;
+    private String placename;
     PlaceDetail mPlace;
     //the recyclerview
     RecyclerView recyclerView;
@@ -62,6 +63,7 @@ public class PlaceActivity extends AppCompatActivity {
         placetype=myintent.getStringExtra("placetype");
         latitude=Double.parseDouble(myintent.getStringExtra("latitude"));
         longitude=Double.parseDouble(myintent.getStringExtra("longitude"));
+        placename=myintent.getStringExtra("placeName");
 
         //getting the recyclerview from xml
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
@@ -70,10 +72,57 @@ public class PlaceActivity extends AppCompatActivity {
 
         mService = Common.getGoogleAPIService();
 
-        nearByPlace("cafe");
+
+        if(placename.equals(""))
+        {
+            nearByPlace(placetype);
+        }
+        else {
+            nearPlace(placename);
+        }
 
     }
 
+    private void nearPlace(final String placeName) {
+
+        String url = getUrlPlace(latitude,longitude,placeName);
+
+        mService.getNearByPlaces(url)
+                .enqueue(new Callback<MyPlaces>() {
+                    @Override
+                    public void onResponse(Call<MyPlaces> call, Response<MyPlaces> response) {
+
+                        currentPlace = response.body();
+                        if(response.isSuccessful())
+                        {
+                            for(int i=0;i<response.body().getResults().length;i++)
+                            {
+
+                                Results googlePlace = response.body().getResults()[i];
+
+                                String placeName = googlePlace.getName();
+                                String PlaceRating=googlePlace.getRating();
+                                Photos[] photos =googlePlace.getPhotos();
+                                LatLng latLng = new LatLng(latitude,longitude);
+                                Place p = new Place(placeName,PlaceRating);
+                                p.setPhotos(photos);
+                                listPlace.add(p);
+                            }
+                            //creating recyclerview adapter
+                            PlaceAdapter adapter = new PlaceAdapter(PlaceActivity.this, listPlace,currentPlace);
+                            //setting adapter to recyclerview
+                            recyclerView.setAdapter(adapter);
+
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<MyPlaces> call, Throwable t) {
+
+                    }
+                });
+    }
     private void nearByPlace(final String placeType) {
 
         String url = getUrl(latitude,longitude,placeType);
@@ -114,13 +163,19 @@ public class PlaceActivity extends AppCompatActivity {
                     }
                 });
     }
-
     private String getUrl(double latitude, double longitude, String placeType) {
         StringBuffer googlePlacesUrl = new StringBuffer("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
         googlePlacesUrl.append("location="+latitude+","+longitude);
         googlePlacesUrl.append("&radius="+10000);
         googlePlacesUrl.append("&type="+placeType);
         googlePlacesUrl.append("&sensor=true");
+        googlePlacesUrl.append("&key="+getResources().getString(R.string.browser_service));
+        Log.d("getUrl",googlePlacesUrl.toString());
+        return googlePlacesUrl.toString();
+    }
+    private String getUrlPlace(double latitude, double longitude, String placeName) {
+        StringBuffer googlePlacesUrl = new StringBuffer("https://maps.googleapis.com/maps/api/place/textsearch/json?");
+        googlePlacesUrl.append("query="+placeName+"+Tunisia");
         googlePlacesUrl.append("&key="+getResources().getString(R.string.browser_service));
         Log.d("getUrl",googlePlacesUrl.toString());
         return googlePlacesUrl.toString();

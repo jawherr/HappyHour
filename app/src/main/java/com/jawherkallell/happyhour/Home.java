@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -24,7 +25,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
  */
 public class Home extends Fragment {
     private FusedLocationProviderClient client;
-    ImageButton btRes, btCafe, btBar;
+    private SearchView search;
+    ImageButton btRes, btCafe, btBar,btn;
     double latitude,longitude;
 
     public Home() {
@@ -67,6 +69,7 @@ public class Home extends Fragment {
                 String longt=""+longitude;
                 intent.putExtra("placetype","restaurant");
                 intent.putExtra("latitude", lat);
+                intent.putExtra("placeName","");
                 intent.putExtra("longitude",longt);
                 view.getContext().startActivity(intent);
             }
@@ -101,6 +104,7 @@ public class Home extends Fragment {
                 String longt=""+longitude;
                 intent.putExtra("placetype","cafe");
                 intent.putExtra("latitude", lat);
+                intent.putExtra("placeName","");
                 intent.putExtra("longitude",longt);
                 view.getContext().startActivity(intent);
             }
@@ -135,9 +139,46 @@ public class Home extends Fragment {
                String lat=""+latitude;
                String longt=""+longitude;
                intent.putExtra("placetype","bar");
+                intent.putExtra("placeName","");
                intent.putExtra("latitude", lat);
                intent.putExtra("longitude",longt);
                view.getContext().startActivity(intent);
+            }
+        });
+        btn=(ImageButton) view.findViewById(R.id.ancre);
+        search=(SearchView)view.findViewById(R.id.searchView);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ){
+
+                    return;
+                }
+                client.getLastLocation().addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+
+
+                        if (location != null) {
+
+                            String txt = "" + location.getLatitude() + "," + location.getAltitude();
+
+                            latitude = location.getLatitude();
+                            longitude = location.getLongitude();
+                            //nearByPlace("restaurant");
+
+
+                        }
+                    }
+                });
+                Intent intent=new Intent(view.getContext(), PlaceActivity.class);
+                String lat=""+latitude;
+                String longt=""+longitude;
+                intent.putExtra("placetype","");
+                intent.putExtra("placeName",search.getQuery().toString());
+                intent.putExtra("latitude", lat);
+                intent.putExtra("longitude",longt);
+                view.getContext().startActivity(intent);
             }
         });
         return view;

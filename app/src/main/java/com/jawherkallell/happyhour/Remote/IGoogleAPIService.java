@@ -12,5 +12,8 @@ public interface IGoogleAPIService {
     Call<MyPlaces> getNearByPlaces(@Url String url);
 
     @GET
+    Call<MyPlaces> getPlace(@Url String url);
+
+    @GET
     Call<PlaceDetail> getDetailPlace(@Url String url);
 }
