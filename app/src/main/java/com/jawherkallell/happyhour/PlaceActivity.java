@@ -69,19 +69,25 @@ public class PlaceActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //creating recyclerview adapter
+        PlaceAdapter adapter = new PlaceAdapter(PlaceActivity.this, listPlace,currentPlace);
+        //setting adapter to recyclerview
+        recyclerView.setAdapter(adapter);
 
         mService = Common.getGoogleAPIService();
-
-
         if(placename.equals(""))
         {
+
             nearByPlace(placetype);
         }
         else {
             nearPlace(placename);
         }
 
+
+
     }
+
 
     private void nearPlace(final String placeName) {
 
@@ -112,8 +118,6 @@ public class PlaceActivity extends AppCompatActivity {
                             PlaceAdapter adapter = new PlaceAdapter(PlaceActivity.this, listPlace,currentPlace);
                             //setting adapter to recyclerview
                             recyclerView.setAdapter(adapter);
-
-
                         }
                     }
 
@@ -132,9 +136,10 @@ public class PlaceActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<MyPlaces> call, Response<MyPlaces> response) {
 
-                        currentPlace = response.body();
+
                         if(response.isSuccessful())
                         {
+                            currentPlace = response.body();
                             for(int i=0;i<response.body().getResults().length;i++)
                             {
 

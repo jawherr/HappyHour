@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 
 import com.jawherkallell.happyhour.Common;
+import com.jawherkallell.happyhour.DetailPlace;
 import com.jawherkallell.happyhour.Json.model.MyPlaces;
 import com.jawherkallell.happyhour.Json.model.PlaceDetail;
 import com.jawherkallell.happyhour.R;
@@ -78,7 +79,7 @@ public class PlaceAdapter extends   RecyclerView.Adapter<PlaceAdapter.PlaceViewH
             @Override
             public void onClick(View view) {
                 Common.currentResult = currentPlace.getResults()[position];
-                mCtx.startActivity(new Intent(mCtx,ViewPlace.class));
+                mCtx.startActivity(new Intent(mCtx,DetailPlace.class));
             }
         });
 

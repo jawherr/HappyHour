@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.view.ViewPager;
 
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 
 import android.view.View;
@@ -22,6 +24,7 @@ import com.google.gson.internal.bind.ReflectiveTypeAdapterFactory;
 import com.jawherkallell.happyhour.Json.model.Photos;
 import com.jawherkallell.happyhour.Json.model.PlaceDetail;
 import com.jawherkallell.happyhour.Remote.IGoogleAPIService;
+import com.jawherkallell.happyhour.card.PlaceAdapter;
 import com.squareup.picasso.Picasso;
 
 import retrofit2.Call;
@@ -38,6 +41,7 @@ public class ViewPlace extends AppCompatActivity {
     ViewPager mViewPager;
     PlaceDetail mPlace;
   CustomSwipeAdapter adapter;
+  RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,8 +63,9 @@ public class ViewPlace extends AppCompatActivity {
         //
 
 
+        //setting adapter to recyclerview
 
-        mViewPager = (ViewPager) findViewById(R.id.pager);
+       mViewPager = (ViewPager) findViewById(R.id.pager);
 
         btnViewOnMap.setOnClickListener(new View.OnClickListener() {
             @Override

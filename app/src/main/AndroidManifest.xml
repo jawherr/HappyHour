@@ -31,7 +31,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAX_bIq4yazHjRs2XZJHXazZVTfZuS9ZE0" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,7 +43,8 @@
         <activity android:name=".CafeActivity" />
         <activity android:name=".PlaceActivity" />
         <activity android:name=".EventInfo" />
-        <activity android:name=".ViewPlace"></activity>
+        <activity android:name=".ViewPlace" />
+        <activity android:name=".DetailPlace"></activity>
     </application>
 
 </manifest>
