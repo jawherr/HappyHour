@@ -18,20 +18,28 @@
         android:label="Happyhour"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <!--
-                The API key for Google Maps-based APIs is defined as a string resource.
-                (See the file "res/values/google_maps_api.xml").
-                Note that the API key is linked to the encryption key used to sign the APK.
-                You need a different API key for each encryption key, including the release key that is used to
-                sign the APK for publishing.
-                You can define the keys for the debug and release targets in src/debug/ and src/release/.
-        -->
         <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAX_bIq4yazHjRs2XZJHXazZVTfZuS9ZE0" />
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
 
-        <activity android:name=".MainActivity"
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
             android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,7 +52,10 @@
         <activity android:name=".PlaceActivity" />
         <activity android:name=".EventInfo" />
         <activity android:name=".ViewPlace" />
-        <activity android:name=".DetailPlace"></activity>
+        <activity android:name=".DetailPlace" />
+        <activity android:name=".Compte" />
+        <activity android:name=".EventDetails"></activity>
+        <activity android:name=".ProfileActivity"></activity>
     </application>
 
 </manifest>

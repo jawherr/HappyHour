@@ -4,11 +4,24 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.jawherkallell.happyhour.Common;
+import com.jawherkallell.happyhour.DetailPlace;
+import com.jawherkallell.happyhour.Details.card.ReviewAdapter;
+import com.jawherkallell.happyhour.Json.model.Photos;
+import com.jawherkallell.happyhour.Json.model.PlaceDetail;
 import com.jawherkallell.happyhour.R;
+import com.jawherkallell.happyhour.Remote.IGoogleAPIService;
+import com.squareup.picasso.Picasso;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +40,10 @@ public class Reviews extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    RecyclerView recyclerView;
+    PlaceDetail mPlace;
+    Photos[] photos;
+    IGoogleAPIService mService;
 
     private OnFragmentInteractionListener mListener;
 
@@ -59,13 +76,40 @@ public class Reviews extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_reviews, container, false);
+
+        mService = Common.getGoogleAPIService();
+        View view = inflater.inflate(R.layout.fragment_reviews, container, false);
+        recyclerView = (RecyclerView)view.findViewById(R.id.recyclerView2);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        mService.getDetailPlace(getDetailUrl(Common.currentResult.getPlace_id()))
+                .enqueue(new Callback<PlaceDetail>() {
+                    @Override
+                    public void onResponse(Call<PlaceDetail> call, Response<PlaceDetail> response) {
+                        mPlace = response.body();
+
+                        photos = mPlace.getResult().getPhotos();
+
+                        ReviewAdapter adapter = new ReviewAdapter(getActivity(), mPlace.getResult().getReviews());
+                        recyclerView.setAdapter(adapter);
+
+                    }
+
+
+                    @Override
+                    public void onFailure(Call<PlaceDetail> call, Throwable t) {
+
+                    }
+                });
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -105,5 +149,20 @@ public class Reviews extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+    public  String getDetailUrl(String place_id) {
+        StringBuilder url = new StringBuilder("https://maps.googleapis.com/maps/api/place/details/json");
+        url.append("?placeid="+place_id);
+        url.append("&key="+getResources().getString(R.string.browser_service));
+        return url.toString();
+    }
+
+    public String getPhotoOfPlace(String photos_reference, int maxWidth) {
+        StringBuilder url = new StringBuilder("https://maps.googleapis.com/maps/api/place/photo");
+        url.append("?maxwidth="+maxWidth);
+        url.append("&photoreference="+photos_reference);
+        url.append("&key="+getResources().getString(R.string.browser_service));
+        return url.toString();
+
     }
 }

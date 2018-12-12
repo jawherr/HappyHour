@@ -5,4 +5,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_resturant">ResturantActivity</string>
     <string name="title_activity_cafe">CafeActivity</string>
+    <string name="facebook_app_id">332129790727630</string>
+    <string name="fb_login_protocol_scheme">fb332129790727630</string>
+    <string name="pref_file">com.jawherkallell.preference_file</string>
+    <string name="pref_login_status">com.jawherkallell.preference_login_status</string>
+    <string name="pref_user_name">com.jawherkallell.preference_user_name</string>
 </resources>

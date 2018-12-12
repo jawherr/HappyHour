@@ -8,6 +8,7 @@ import com.jawherkallell.happyhour.Remote.RetrofitClient;
 public class Common {
 
     private  static final String GOOGLE_API_URL = "https://maps.googleapis.com/";
+    private  static  final  String MyAPI_URL="";
     public static Results currentResult;
 
     public static IGoogleAPIService getGoogleAPIService()

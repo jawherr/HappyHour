@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".DetailPlace">
+    tools:context=".EventDetails">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -22,12 +22,14 @@
             android:layout_height="match_parent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             android:fitsSystemWindows="true"
+
             app:contentScrim="?attr/colorPrimary"
-            app:expandedTitleMarginStart="48dp"
-            app:expandedTitleMarginEnd="64dp">
+            app:expandedTitleMarginStart="20dp"
+
+         >
 
             <ImageView
-                android:id="@+id/backdrop"
+                android:id="@+id/backdrop2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
@@ -53,48 +55,55 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:layout_collapseMode="pin" />
 
-
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/nest"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
-        <LinearLayout
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
 
+            <TextView
 
-            <android.support.design.widget.TabLayout
+                android:layout_marginTop="20dp"
+                android:id="@+id/textViewAdress"
+                android:textSize="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/tablayout"
-                android:background="@color/colorPrimary"
-                android:minHeight="?attr/actionBarSize"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+                android:text="Date:" />
 
-            </android.support.design.widget.TabLayout>
-
-            <android.support.v4.view.ViewPager
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/textViewAdress"
+                android:id="@+id/textViewDate"
+                android:textSize="30dp"
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/pager">
-
-            </android.support.v4.view.ViewPager>
-
-        </LinearLayout>
-
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+            <TextView
+                android:layout_below="@+id/textViewDate"
+                android:layout_marginTop="20dp"
+                android:id="@+id/textView"
+                android:textSize="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Description:" />
+            <TextView
+                android:layout_marginTop="20dp"
+                android:textSize="30dp"
+                android:layout_below="@id/textView"
+                android:id="@+id/textViewDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+        </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin"
-        android:clickable="true"
-        android:src="@drawable/plus"
-        app:layout_anchor="@id/appbar"
-        app:layout_anchorGravity="bottom|right|end" />
+    l
+
 
 
 

@@ -119,100 +119,30 @@
 
                 </LinearLayout>
 
-                <HorizontalScrollView
-                    android:id="@+id/horz"
+
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_below="@+id/lin2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/lin2"
-                    android:layout_marginTop="0dp">
+                    android:id="@+id/recyclerView3"></android.support.v7.widget.RecyclerView>
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:id="@+id/imageView3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:src="@drawable/ev" />
-
-                        <ImageView
-                            android:id="@+id/imageView4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:src="@drawable/ev" />
-
-                        <ImageView
-                            android:id="@+id/imageView5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:src="@drawable/ev" />
-
-                        <ImageView
-                            android:id="@+id/imageView6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:src="@drawable/ev" />
-
-                        <ImageView
-                            android:id="@+id/imageView7"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:src="@drawable/ev" />
-
-                        <ImageView
-                            android:id="@+id/imageView8"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:src="@drawable/ev" />
-
-                        <ImageView
-                            android:id="@+id/imageView9"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:src="@drawable/ev" />
-                    </LinearLayout>
-                </HorizontalScrollView>
                 <LinearLayout
                     android:id="@+id/Lh"
                     android:layout_marginTop="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/cafee"
-                    android:layout_below="@+id/horz"
+                    android:layout_below="@+id/recyclerView3"
                     android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Description de lapplication"
-                        android:layout_marginLeft="8dp"
-                        android:textColor="@android:color/white"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Description de lapplication"
-                        android:layout_marginLeft="8dp"
-                        android:textColor="@android:color/white"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Description de lapplication"
-                        android:layout_marginLeft="8dp"
-                        android:textColor="@android:color/white"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
+                    <android.support.v7.widget.RecyclerView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="300dp"
+
+                        android:id="@+id/recyclerView5"></android.support.v7.widget.RecyclerView>
                 </LinearLayout>
+
 
             </RelativeLayout>
 

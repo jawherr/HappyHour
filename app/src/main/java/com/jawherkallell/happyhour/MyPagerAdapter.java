@@ -15,7 +15,7 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
         super(fm);
         this.fragments = new ArrayList<Fragment>();
         fragments.add(new Home());
-        fragments.add(new Event());
+        fragments.add(new EventFragment());
         fragments.add(new Search());
         fragments.add(new Profile());
     }

@@ -5,12 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".Details.Reviews">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="reviews"
-        android:textSize="30dp"
-        android:layout_centerInParent="true"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

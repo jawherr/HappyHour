@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingRight="5dp"
+    android:paddingLeft="5dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register Form"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"/>
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:id="@+id/txtname"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="70dp"/>
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="User Name"
+        android:id="@+id/txt_user_name"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"/>
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:id="@+id/txt_user_pass"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:inputType="textPassword"/>
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="Register"/>
+
+
+
+</LinearLayout>

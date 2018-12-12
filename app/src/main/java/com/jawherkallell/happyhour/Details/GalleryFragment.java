@@ -4,11 +4,23 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.jawherkallell.happyhour.Common;
+import com.jawherkallell.happyhour.Details.card.ReviewAdapter;
+import com.jawherkallell.happyhour.ImageGalleryAdapter;
+import com.jawherkallell.happyhour.Json.model.Photos;
+import com.jawherkallell.happyhour.Json.model.PlaceDetail;
 import com.jawherkallell.happyhour.R;
+import com.jawherkallell.happyhour.Remote.IGoogleAPIService;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +39,9 @@ public class GalleryFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    Photos[] photos;
+    IGoogleAPIService mService;
+    PlaceDetail mPlace;
 
     private OnFragmentInteractionListener mListener;
 
@@ -65,7 +80,33 @@ public class GalleryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_gallery, container, false);
+        mService = Common.getGoogleAPIService();
+        View view = inflater.inflate(R.layout.fragment_gallery, container, false);
+
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
+        final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.rv_images);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
+        mService.getDetailPlace(getDetailUrl(Common.currentResult.getPlace_id()))
+                .enqueue(new Callback<PlaceDetail>() {
+                    @Override
+                    public void onResponse(Call<PlaceDetail> call, Response<PlaceDetail> response) {
+                        mPlace = response.body();
+
+                        photos = mPlace.getResult().getPhotos();
+                        ImageGalleryAdapter adapter = new ImageGalleryAdapter(getActivity(), photos);
+                        //  ReviewAdapter adapter = new ReviewAdapter(getActivity(), mPlace.getResult().getReviews());
+                        recyclerView.setAdapter(adapter);
+
+                    }
+
+
+                    @Override
+                    public void onFailure(Call<PlaceDetail> call, Throwable t) {
+
+                    }
+                });
+        return  view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -105,5 +146,11 @@ public class GalleryFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+    public  String getDetailUrl(String place_id) {
+        StringBuilder url = new StringBuilder("https://maps.googleapis.com/maps/api/place/details/json");
+        url.append("?placeid="+place_id);
+        url.append("&key="+getResources().getString(R.string.browser_service));
+        return url.toString();
     }
 }

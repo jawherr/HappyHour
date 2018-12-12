@@ -40,8 +40,8 @@ public class ViewPlace extends AppCompatActivity {
     Photos[] photos;
     ViewPager mViewPager;
     PlaceDetail mPlace;
-  CustomSwipeAdapter adapter;
-  RecyclerView recyclerView;
+    CustomSwipeAdapter adapter;
+    RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +65,7 @@ public class ViewPlace extends AppCompatActivity {
 
         //setting adapter to recyclerview
 
-       mViewPager = (ViewPager) findViewById(R.id.pager);
+        mViewPager = (ViewPager) findViewById(R.id.pager);
 
         btnViewOnMap.setOnClickListener(new View.OnClickListener() {
             @Override

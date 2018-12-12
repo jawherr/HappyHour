@@ -1,25 +1,50 @@
 package com.jawherkallell.happyhour;
 
 import android.Manifest;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener,Profile.OnLoginFormActivityListener,WelcomeFragment.OnLogoutListener{
     private static final String TAG = "MainActivity";
     BottomNavigationView nav;
-
+    public static PrefConfig prefConfig;
+    public static ApiInterface apiInterface;
+    private Session session;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        nav=findViewById(R.id.btNav);
+        nav.setOnNavigationItemSelectedListener(this);
+        nav.setSelectedItemId(R.id.nav_home);
+        checkLocationPermission();
 
+        prefConfig = new PrefConfig(this);
+        apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+
+
+        Intent intent2 = getIntent();
+        if(intent2.getStringExtra("target2")!=null) {
+            String target2 = intent2.getStringExtra("target2");
+            getSupportFragmentManager().beginTransaction().
+                    replace(R.id.container, new ProfileFragment()).commit();
+
+        }
+        Intent intent = getIntent();
+        if(intent.getStringExtra("target")!=null) {
+            String target = intent.getStringExtra("target");
+            getSupportFragmentManager().beginTransaction().
+                    replace(R.id.container, new Profile()).commit();
+
+        }
         nav=findViewById(R.id.btNav);
         nav.setOnNavigationItemSelectedListener(this);
         nav.setSelectedItemId(R.id.nav_home);
@@ -27,13 +52,25 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     }
 
+
+    public Session getSession() {
+        return session;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
+    }
+
+
     Home home_fragment = new Home();
-    Event event_fragment = new Event();
+    EventFragment event_fragment = new EventFragment();
     Profile profile_fragment = new Profile();
-    Search search_fragment = new Search();
+    WelcomeFragment welcomeFragment = new WelcomeFragment();
+    ProfileFragment profileFragment = new ProfileFragment();
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Profile profile=new Profile();
         switch (item.getItemId()) {
             case R.id.nav_home:
                 getSupportFragmentManager().beginTransaction().
@@ -45,14 +82,21 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                         replace(R.id.container, event_fragment).commit();
                 return true;
 
-            /*case R.id.nav_search:
-                getSupportFragmentManager().beginTransaction().
-                        replace(R.id.container, search_fragment).commit();
-                return true;
-            */
             case R.id.nav_profile:
-                getSupportFragmentManager().beginTransaction().
-                        replace(R.id.container, profile_fragment).commit();
+                if (session!=null && session.getusername().equals("houssem"))
+                {
+                      getSupportFragmentManager().beginTransaction().
+                        replace(R.id.container, welcomeFragment).commit();
+                }
+                else if(profile.googleApiClient!=null){
+                    getSupportFragmentManager().beginTransaction().
+                            replace(R.id.container, profileFragment).commit();
+                }
+                else{
+                    getSupportFragmentManager().beginTransaction().
+                            replace(R.id.container, profile_fragment).commit();
+                }
+
                 return true;
 
         }
@@ -74,6 +118,24 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
         }
+    @Override
+    public void performRegister() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.container,
+                new RegistrationFragment()).addToBackStack(null).commit();
+    }
 
+    @Override
+    public void performLogin(String name)
+    {
+        prefConfig.writeName(name);
+        getSupportFragmentManager().beginTransaction().replace(R.id.container,new WelcomeFragment()).commit();
+    }
+
+    @Override
+    public void logoutPerformed() {
+        prefConfig.writeLoginStatus(false);
+        prefConfig.writeName("User");
+        getSupportFragmentManager().beginTransaction().replace(R.id.container,new Profile()).commit();
+    }
 
 }
